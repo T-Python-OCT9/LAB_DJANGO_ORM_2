@@ -22,6 +22,7 @@ def addPost(request: HttpRequest):
         else:
             published = False
         Post(title=request.POST['title'], content=request.POST['content'], is_published=published, publish_date=request.POST['publish_date']).save()
+        return redirect('posts:list')
     return render(request, 'posts/add.html', {'date':date})
 
 def postDetail(request: HttpRequest, post_id: int):

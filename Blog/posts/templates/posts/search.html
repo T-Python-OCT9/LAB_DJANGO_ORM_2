@@ -11,7 +11,8 @@
             <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-search"></i></button> 
         </form>
     </div>
-{% if posts %}
+{% if request.GET.text|length > 1 %}
+{% if posts|length > 1 %}
 <div class="w-50 m-4 px-4 border rounder-3">
     <h1 class="my-3 border-bottom pb-2">Search Results for: {{request.GET.text}}</h1>
     {% for post in posts %}
@@ -22,6 +23,7 @@
 <div class="w-50 m-4 px-4 border rounder-3">
     <h1 class="my-3 pt-4">No Results for: {{request.GET.text}}</h1>
 </div>
+{% endif %}
 {% endif %}
 </div>
 {% endblock %}
