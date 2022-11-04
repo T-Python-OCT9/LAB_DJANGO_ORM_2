@@ -1,0 +1,28 @@
+{% extends 'Blog/base.html' %}
+{% block title %} Add Blog {% endblock %}
+{% block content %}
+{% load static %}
+
+
+<div class="container">
+  <h1>Add New Blog </h1>
+  <form action="" method="POST">
+    {% csrf_token %}
+    <label>Title:</label>
+    <input type="text" name="Title" class="form-control"/><br><br>
+    <label>Content:</label>
+    <textarea name="Content" class="form-control"></textarea><br><br>
+    <label>Choose Is Published:</label>
+    <select class="form-select" name="is_published">
+      <option value="True">Yes</option>
+      <option value="False">No</option>
+    </select><br><br>
+    <label>Publish Date:</label>
+    <input type="datetime-local"  class="btn btn-outline-secondary" name="publish_date" /><br><br>
+    
+    <input type="submit" class="btn btn-light" value="Create" />
+  
+  </form>
+</div>
+
+{% endblock %}
