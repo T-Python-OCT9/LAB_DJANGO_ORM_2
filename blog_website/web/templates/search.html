@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Search Page</h1>
+<hr>
+<br/>
+<form action="{% url 'web:search_post' %}" method="GET" value="{{request.GET.q}}">
+<input type="text" name="q" value="{{request.GET.q}}" placeholder="Search posts"/>
+<input type="submit" name="submit" value="Search"/>
+</form>
+
+
+{% if submitbutton == 'Search' and request.GET.q != '' %}
+{% if results %}
+<h1>Results for <b>{{ request.GET.q }}</b></h1>
+<br/><br/>
+
+<div class="container">
+    <table class="table">
+
+        <thead>
+        <tr>
+            <th scope="col">title</th>
+            <th scope="col">publish date</th>
+            <th scope="col">is published</th>
+            <th scope="col">Edit</th>
+        </tr>
+        </thead>
+            <tbody>
+                {% for result in results %}
+                <tr>
+
+                <th scope="row"><a href="{% url 'web:post_detail' result.id %}">{{ result.title }}</a></th>
+                <td>{{ result.publish_date }}</td>
+                <td>{{ result.is_published }}</td>
+                <td>
+                
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Edit
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="{% url 'web:update_post' result.id %}">Update</a></li>
+                          <li><a class="dropdown-item" href="{% url 'web:delete_post' result.id %}">Delete</a></li>
+                        </ul>
+                      </div>
+                {% endfor %}
+                {% else %}
+                No search results for this query
+                {% endif %}
+                {% endif %}
+                
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

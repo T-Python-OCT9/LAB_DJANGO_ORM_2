@@ -1,0 +1,53 @@
+{% extends  'base.html'  %}
+
+{% block search %} 
+    <div class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+        <form action="{% url 'web:search_post' %}" method="GET" value="{{request.GET.q}}">
+            <input type="text" name="q" value="{{request.GET.q}}" placeholder="Search posts"/>
+            <input type="submit" name="submit" value="Search"/>
+            </form>
+    </div>
+{% endblock %}
+
+{% block content %}
+
+<h1>Posts List</h1>
+<hr>
+
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">title</th>
+            <th scope="col">publish date</th>
+            <th scope="col">is published</th>
+            <th scope="col">Edit</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for post in posts %}
+            <tr>
+                <th scope="row"><a href="{% url 'web:post_detail' post.id %}">{{ post.title }}</a></th>
+                <td>{{ post.publish_date }}</td>
+                <td>{{ post.is_published }}</td>
+                <td>
+
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Edit
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="{% url 'web:update_post' post.id %}">Update</a></li>
+                          <li><a class="dropdown-item" href="{% url 'web:delete_post' post.id %}">Delete</a></li>
+                        </ul>
+                      </div>
+
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
