@@ -1,0 +1,36 @@
+{% extends 'posts/base.html' %}
+{% block title %} Posts List {% endblock %}
+{% block content %}
+<h1 class="my-3 border-bottom">Posts</h1>
+<table class="table">
+    <thead>
+      <tr scope="row">
+        <th scope="col">Title</th>
+        <th scope="col" class="text-center">Date</th>
+        <th scope="col" class="text-center">Publish Status</th>
+        <th scope="col" class="text-center">Manage</th>
+      </tr>
+    </thead>
+    <tbody>
+{% for post in posts %}
+<tr scope="row">
+    <td scope="col"><i class="bi bi-arrow-return-right"></i> <a href="{% url 'posts:detail' post.id %}" class="link-secondary">{{post.title}}</a></td>
+    <td scope="col" class="text-center"><i class="bi bi-calendar3 me-1"></i> {{post.publish_date|date:'Y-m-d | h-i'}}</td>
+    <td scope="col" class="text-center">
+        {% if post.is_published %}
+        <i class="bi bi-check-lg fs-5"></i>
+        {% else %}
+        <i class="bi bi-x-lg fs-5"></i>
+        {% endif %}
+    </td>
+    <td scope="col" class="text-center">
+        <div class="btn-group">
+            <a class="btn btn-outline-secondary" href="{% url 'posts:update' post.id %}"><i class="bi bi-pencil-square"></i></a>
+            <a class="btn btn-outline-secondary" href="{% url 'posts:delete' post.id %}"><i class="bi bi-trash"></i></a>
+        </div>
+    </td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% endblock %}
