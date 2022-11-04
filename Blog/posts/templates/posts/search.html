@@ -1,0 +1,27 @@
+{% extends 'posts/base.html' %}
+{% block title %} Search {% endblock %}
+{% block content %}
+<h1 class="my-3 border-bottom"></h1>
+
+<div class="d-flex">
+    <div class="w-50 m-4 px-4 border rounder-3">
+        <h1 class="my-3 border-bottom pb-2">Search in Posts</h1>
+        <form class="input-group mb-3 w-75 mx-auto" action="{% url 'posts:search' %}" method="GET">            
+            <input type="search" class="form-control" placeholder="Search in Posts..." name="text">
+            <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-search"></i></button> 
+        </form>
+    </div>
+{% if posts %}
+<div class="w-50 m-4 px-4 border rounder-3">
+    <h1 class="my-3 border-bottom pb-2">Search Results for: {{request.GET.text}}</h1>
+    {% for post in posts %}
+    <p class="ms-3"><i class="bi bi-arrow-return-right"></i> <a href="{% url 'posts:detail' post.id %}" class="link-secondary">{{post.title}} <i class="bi bi-link-45deg"></i></a></p>
+    {% endfor %}
+</div>
+{% else %}
+<div class="w-50 m-4 px-4 border rounder-3">
+    <h1 class="my-3 pt-4">No Results for: {{request.GET.text}}</h1>
+</div>
+{% endif %}
+</div>
+{% endblock %}
