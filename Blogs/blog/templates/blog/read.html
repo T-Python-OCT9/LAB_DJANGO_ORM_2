@@ -12,7 +12,6 @@
             <th scope="col">title</th>
             <th scope="col">publish date</th>
             <th scope="col">is published</th>
-            <th scope="col">Edit</th>
         </tr>
         </thead>
         <tbody>
@@ -21,19 +20,6 @@
                 <th scope="row">{{ i.Title }}</th>
                 <td>{{ i.publish_date }}</td>
                 <td>{{ i.is_published}}</td>
-                <td>
-
-                    <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Edit
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" >Update</a></li>
-                          <li><a class="dropdown-item" >Delete</a></li>
-                        </ul>
-                      </div>
-
-                </td>
             </tr>
             {% endfor %}
 
