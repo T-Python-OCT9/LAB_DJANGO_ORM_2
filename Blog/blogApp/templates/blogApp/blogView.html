@@ -1,0 +1,55 @@
+{% extends 'blogApp/blog.html' %}
+
+
+
+{%block title%}
+<title>Views page </title>
+
+{%endblock%}
+
+
+
+{%block view%}
+
+
+<div class="pt-4 container">
+
+
+
+<h1 class="pt-2 ">{{ postView.title }}</h1>
+<div class="container">
+    <p class=> date is :{{ postView.publish_date }}</p>
+    <div class="pt-2 text-center">
+        {{ postView.content }}
+    </div>
+
+    <a href="{% url 'blogApp:delete' postView.id %}">delete</a>
+    <a href="{% url 'blogApp:update' postView.id %}">update</a>
+
+
+
+    
+
+
+  
+   
+    
+
+
+    
+</div>
+
+</div>
+
+
+
+
+
+
+{%endblock%}
+
+
+
+{%block blogweb%}
+
+{%endblock%}
