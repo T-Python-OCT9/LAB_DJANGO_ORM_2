@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from django.http import HttpRequest
+from django.http import HttpRequest,HttpResponse
 from.models import Blog
 
 
@@ -45,6 +45,8 @@ def delete(request:HttpRequest,post_id : int):
     view_info=Blog.objects.get(id=post_id)
     view_info.delete()
     return render(request,'blogApp/blogRead.html')
+
+
 
 
 
