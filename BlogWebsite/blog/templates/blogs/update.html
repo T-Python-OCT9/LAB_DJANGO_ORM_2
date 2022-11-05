@@ -1,0 +1,40 @@
+{% extends 'blogs/home.html' %}
+
+{% block title %} Update Post {% endblock %}
+
+{% block content %}
+<h1 style="font-family:Arial, Helvetica, sans-serif; text-align: center;"><div class="container" style="background-color:rgba(225, 211, 198, 0.5); border-radius: 20px;">Update Post {{ blog.title }}</h1></div>
+    <div class="container">
+    <form action="" method="POST">
+
+        {% csrf_token %}
+        <div class="mb-3">
+            <label  class="form-label">Title</label>
+            <input type="text" class="form-control" name="title" value="{{ blog.title }}">
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">Content</label>
+            <textarea type="text" class="form-control" name="content">{{ blog.content }}</textarea>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">Publish Date</label>
+            <input type="datetime-local" class="form-control" name="publish_date" value="{{ blog.publish_date }}" />
+        </div>
+
+
+        <div class="mb-3">
+            <label class="form-label">Is Published ?</label>
+            <select class="form-select" name="is_published" value="{{ blog.is_published }}">
+                <option value="True">Yes</option>
+                <option value="False">No</option>
+            </select>
+        </div>
+        <div class="d-grid gap-2">
+            <input class="btn btn-dark" type="submit" value="Update Post">
+          </div>
+        
+    </form>
+</div>
+{% endblock %}

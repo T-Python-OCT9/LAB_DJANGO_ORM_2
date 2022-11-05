@@ -1,0 +1,12 @@
+{% extends 'blogs/home.html' %}
+
+{% block title %} research result {% endblock %}
+
+{% block content %}
+
+{% for blog in search_post %}
+
+{{blog.content}}
+
+{% endfor %}
+{% endblock %}
