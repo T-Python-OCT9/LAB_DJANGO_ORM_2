@@ -1,0 +1,22 @@
+{% extends 'WebSiteBlog/base.html' %}
+
+{% block title%} {{post.post_title}} {% endblock%}
+
+
+{% block content %}
+
+<div  >
+    <h1 style="color:rgb(176, 131, 77) ;text-align:left;">New Posts</h1>
+    <div style="text-align:center  ;align-content: center;">
+        <div >
+            <h3 style="color:rgb(176, 131, 77);text-align:center ;"> {{ post.post_title }} </h3><br>                
+            <div style="text-align:left ; padding:0 10%;">
+                <lable style="color:rgb(87, 65, 40)  ;"><strong style="color:rgb(176, 131, 77) ;">By:</strong> </t>{{post.author_name}},<strong style="color:rgb(176, 131, 77) ;">Date:</strong> </t>{{ post.publish_date }}</lable>
+            </div><br>
+            <p style="color:rgb(87, 65, 40) ;text-align: center; "> {{post.post_content}} </p>
+            <hr>
+        </div>
+    
+    </div>
+</div>
+{% endblock %}

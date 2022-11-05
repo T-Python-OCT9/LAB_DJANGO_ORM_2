@@ -1,0 +1,39 @@
+{% extends 'WebSiteblog/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h1 style="color:rgb(176, 131, 77) ;">Add New Post </h1>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div><label style="color:rgb(87, 65, 40) ;">Post Title:</label><br>
+        <input type="text" name="post_title" placeholder="Post title Here" /><br>
+        </div>
+        
+        <div><label style="color:rgb(87, 65, 40) ;">Author Name:</label><br>
+        <input type="text" name="author_name" placeholder="Author name here" /><br>
+        </div>
+        
+        <div><label style="color:rgb(87, 65, 40) ;">Post:</label><br>
+        <textarea name="post_content" placeholder="Please write your post here"></textarea><br>
+        </div>
+        
+        <div class="mb-3">
+            <label  class="form-label">Publish Date</label>
+            <input type="datetime-local" class="form-control" name="publish_date" />
+        </div>
+            
+        <div><p style="color:rgb(87, 65, 40) ;">is published?:</p>
+        <input type="radio" value=True name="is_published" checked>
+        <label for="is_published">Yes</label>
+        <input type="radio" value=False name="is_published">
+        <label for="is_published2">No</label><br><br><br>
+        </div>
+
+        <input type="submit" value="Create" />
+    </form>
+
+</div>
+
+{% endblock %}
