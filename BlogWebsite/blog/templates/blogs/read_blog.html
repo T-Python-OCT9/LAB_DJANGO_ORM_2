@@ -1,0 +1,48 @@
+{% extends 'blogs/home.html' %}
+{% block title %} Read Blog {% endblock%}
+{% block content %}
+
+<div class="container">
+  <h1 style="font-family:Arial, Helvetica, sans-serif; text-align: center;"><div class="container" style="background-color:rgba(225, 211, 198, 0.5); border-radius: 20px;">Blogs</h1></div>
+   
+    <br>
+    <table class="table"style="font-family:Arial, Helvetica, sans-serif; text-align: center;">
+    <ul >
+        <thead>
+            <tr style="font-size:20px; ">
+              <th scope="col">Title</th>
+              <th scope="col">is published</th>
+              <th scope="col">publish date</th>
+              <th scope="col">Edit</th>
+            </tr>
+          </thead>
+
+          <tbody>
+             {% for blog in blogs %}
+              <tr>
+                <th scope="row"><a href="{% url 'blog:details_post' blog.id %}">{{ blog.title }}</a></th>
+                <td>{{blog.is_published}}</td>
+                <td>{{blog.publish_date}}</td>
+                <td>
+
+                    <div class="dropdown">
+                        <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" >
+                          Edit
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="{% url 'blog:update' blog.id %}">Edit</a></li>
+                          <li><a class="dropdown-item" href="{% url 'blog:delete' blog.id %}">Delete</a></li>
+                        </ul>
+                      </div>
+
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+            
+    </ul>
+</table>
+</div>
+
+
+{% endblock %}
