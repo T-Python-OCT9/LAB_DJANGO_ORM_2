@@ -12,7 +12,7 @@ urlpatterns = [
     path("view/<post_id>", views.view_info, name="view_info"),
     path("delete/<post_id>", views.delete, name="delete"),
     path("update/<post_id>",views.update, name="update"),
-    
+ 
   
 
 

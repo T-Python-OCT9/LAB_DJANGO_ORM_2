@@ -23,12 +23,12 @@ def blogAdd (request:HttpRequest):
 
 def blogRead (request:HttpRequest):
     blog_list=Blog.objects.all()
-    if request.method=="POST":
-        blog_list=Blog.objects.filter(title__contains = request.POST["search"])
-
-
-#posts = Post.objects.filter(title__contains = "aims") #to filter using postfix __contains
+    #result=request.GET.get("search")
+    #blog_list2=Blog.objects.filter(title__contains = result)
     return render(request,'blogApp/blogRead.html',{"blogs":blog_list})
+
+
+
 
 
 def view_info(request:HttpRequest,post_id : int):
@@ -44,7 +44,7 @@ def view_info(request:HttpRequest,post_id : int):
 def delete(request:HttpRequest,post_id : int):
     view_info=Blog.objects.get(id=post_id)
     view_info.delete()
-    return render(request,'blogApp/blogRead.html')
+    return render(request,'blogApp/blog.html')
 
 
 
