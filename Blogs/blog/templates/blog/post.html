@@ -1,0 +1,38 @@
+{% extends 'blog/base.html' %}
+
+{% block title %} Add {% endblock %}
+
+{% block content %}
+
+
+    <h3>Add New Post: </h3>
+     
+    <div class="container"> <br>
+            
+        <br>
+        <form action="" method="POST">
+            {% csrf_token %}
+
+            <label>Title:</label>
+            <input type="text" name="Title" placeholder="Title..." /><br><br><br>
+
+            <label>Content:</label>
+            <textarea name="Content"></textarea><br><br><br>
+
+            <label>is published: </label><br>
+            <input type="radio" id="true" name="is_published" value="True">
+            <label for="rue">yes</label><br>
+            <input type="radio" id="false" name="is_published" value="False">
+            <label for="false">no</label><br><br><br>
+
+
+            <label>Detrmin the Date:</label>
+            <input type="date" name="publish_date" /><br><br><br>
+    
+            <input type="submit" value="Send" /><br><br>
+        </form>
+    
+    </div>
+
+
+{% endblock %}
