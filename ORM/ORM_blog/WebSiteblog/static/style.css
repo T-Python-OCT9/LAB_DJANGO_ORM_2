@@ -1,0 +1,76 @@
+
+@font-face {
+    font-family: "tajwal";
+    src: url('http://127.0.0.1:8000/static/fonts/Tajwal-Regular.ttf');
+}
+
+
+body {
+    font-family: "ArefRuqaaink";
+}
+@font-face {
+    font-family: "";
+    src: url('http://127.0.0.1:8000/static/fonts/ArefRuqaaInk-Regular.ttf');
+}
+
+
+body {
+    font-family: "tajwal-light";
+}
+
+element.style {
+}
+.blocks-list .article-list {
+    padding: 0 20px;
+}
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+* {
+    box-sizing: border-box;
+}
+user agent stylesheet
+ul ul {
+    list-style-type: circle;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+}
+user agent stylesheet
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+user agent stylesheet
+li {
+    text-align: -webkit-match-parent;
+}
+.blocks-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    list-style: none;
+    padding: 0;
+}
+user agent stylesheet
+ul {
+    list-style-type: disc;
+}
+body {
+    position: relative;
+    min-height: 100%;
+    min-width: 320px;
+    background-color: #FFFFFF;
+    color: #2c343e;
+    font-family: PlusJakartaSans, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Cantarell", "Helvetica Neue", "Ubuntu", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}

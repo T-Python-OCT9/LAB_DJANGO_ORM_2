@@ -1,0 +1,44 @@
+{% extends 'WebSiteBlog/base.html' %}
+
+{% block content %}
+<h1>Posts List</h1>
+
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Title</th>
+            <th scoope="col">Author name</th>
+            <th scope="col">Publish date</th>
+            <th scope="col">Is Published</th>
+            <th scope="col">Edit</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for post in posts %}
+            <tr>
+                <th scope="row"><a href="{% url 'WebSiteblog:post_detail' post.id %}"> {{ post.post_title }} </a></th>
+                <td>{{ post.author_name }}</td>
+                <td>{{ post.publish_date }}</td>
+                <td>{{ post.is_published }}</td>
+                <td>
+
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Edit
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="{% url 'WebSiteblog:update_post' post.id %}"> Update </a></li>
+                          <li><a class="dropdown-item" href="{% url 'WebSiteblog:delete_post' post.id %}"> Delete </a></li>
+                        </ul>
+                      </div>
+                    
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

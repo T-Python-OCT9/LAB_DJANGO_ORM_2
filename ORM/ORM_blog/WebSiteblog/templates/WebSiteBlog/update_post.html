@@ -1,0 +1,39 @@
+{% extends 'WebSiteBlog/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h1 style="color:rgb(176, 131, 77) ;"> update Post {{posts.post_title}} </h1>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div><label class="form-label" style="color:rgb(87, 65, 40) ;">Post Title:</label><br>
+        <input type="text" name="post_title" value="{{posts.post_title}}"/><br>
+        </div>
+        
+        <div><label style="color:rgb(87, 65, 40) ;">Author Name:</label><br>
+        <input type="text" name="author_name" value="{{posts.author_name}}" /><br>
+        </div>
+        
+        <div><label style="color:rgb(87, 65, 40) ;">Post:</label><br>
+        <textarea name="post_content" > {{posts.post_content}}</textarea><br>
+        </div>
+        
+        <div class="mb-3">
+            <label  class="form-label">Publish Date</label>
+            <input type="datetime-local" class="form-control" name="publish_date" value="{{posts.publish_date}}"/>
+        </div>
+            
+        <div class="mb-3">
+            <label class="form-label", style="color:rgb(87, 65, 40) ;">Is Published ?</label>
+            <select class="form-select" name="is_published" value= "{{ posts.is_published }}">
+                <option value="True">Yes</option>
+                <option value="False">No</option>
+            </select>
+        </div>
+
+        <input type="submit" value="Update Post" />
+    </form>
+
+</div>
+{% endblock %}
