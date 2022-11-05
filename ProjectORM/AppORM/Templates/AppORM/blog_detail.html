@@ -1,0 +1,21 @@
+{% extends 'AppORM/base.html' %}
+{% block title %}Blog Details{% endblock %}
+{% block content %}
+
+<h2>{{blogs.title}} Details</h2>
+<div class="container">
+    <div>
+        {{blogs.title}}
+    </div>
+    <div>
+        {{blogs.content}}
+    </div>
+    <div>
+        {{blogs.publish_date}}
+    </div>
+    <div>
+        is published? {{blogs.is_published}}
+    </div>
+</div>
+
+{% endblock %}
