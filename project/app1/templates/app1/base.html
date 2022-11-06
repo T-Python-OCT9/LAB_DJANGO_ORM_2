@@ -1,0 +1,36 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %} homepage {% endblock%}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<header class="blog-header lh-1 py-3 " style="border-bottom: gray solid ;">
+  <div class="row flex-nowrap justify-content-between align-items-center">
+    <div class="col-4 pt-1" >
+      <a class="link-secondary" href="{% url 'app1:add_blog' %}" style="padding: 30px;">Add your blog</a>
+    </div>
+    <div class="col-4 text-center">
+    <a class="blog-header-logo text-dark" href="{% url 'app1:home' %}">BLOG</a>
+    </div>
+  </div>
+</header>
+<body >
+
+  <div class="p-0 p-md-5 mb-4 rounded text-bg-light" >
+    <div class="col-md-6 px-0">
+      <h1 class="display-4 fst-italic">YOUR BLOG</h1>
+      <p class="lead my-3">create your own posts, communicate with other writers.</p>
+    </div>
+  </div>
+  <div style="padding: 30px; ">
+{% block content %} {% endblock %} </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+</body>
+<footer class="py-3 my-4">
+
+  <p class="text-center text-muted border-top pb-3 mb-3 ">© 2022 Ghadahharbi, Inc</p>
+</footer>
+</html>
