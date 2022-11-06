@@ -12,7 +12,7 @@
 <body>
     {% block content %}
     <div class="container">
-        <form action="{% url 'Blog_app:search_posts'  %}" method="GET" role="search">
+        <form action="{% url 'Blog_app:home'  %}" method="GET" role="search">
             {%csrf_token%}
          <div class="input-group">
           <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" name ="search"/>
@@ -21,9 +21,15 @@
        </form>
       <hr class="my-4">
     </div>
-      
+    {% if "search"  in  request.GET %}
     <div class="row gx-4 gx-lg-5 justify-content-center">
-       {% for post in posts  %}
+       <h2> Search results for "{{ request.GET.search }}": </h2>
+       <br>
+    </div>
+ {% endif %}
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      
+       {% for post in posts %}
         <div class="col-md-10 col-lg-8 col-xl-7">
             <div class="post-preview">
                     <h2 class="post-title"><a  class="text-dark" href="{% url 'Blog_app:post_detail' post.id %}">{{post.Title}}</a></h2>

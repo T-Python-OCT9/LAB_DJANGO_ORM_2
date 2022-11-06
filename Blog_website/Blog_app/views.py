@@ -9,20 +9,17 @@ from datetime import date
 #Users can read the blog posts.
 
 def home(request: HttpRequest):
-    posts_all = Post.objects.all()
-    return render(request, "Blog_app/home.html", {"posts": posts_all})
+    
+    if "search" in request.GET:
+        posts = Post.objects.filter(Title__contains=request.GET["search"])
+    else:
+       posts = Post.objects.all()
+    return render(request, "Blog_app/home.html", {"posts" : posts})
 
 #- Add search input , to let user search for posts based on title (filter).
 
-def search_posts(request: HttpRequest):
-    try:
-        if request.method=='GET':
-            search_title =request.GET.get('search')
-            search_posts =Post.objects.filter(Title= search_title)
-    except:
-        return render(request, "Blog_app/not_found.html")
 
-    return render(request, "Blog_app/search.html", {"search_posts":search_posts})
+   
 
 # Users can Add a blog post.
 
