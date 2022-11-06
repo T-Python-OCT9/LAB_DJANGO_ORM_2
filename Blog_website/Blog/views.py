@@ -60,8 +60,19 @@ def delete_blog(request:HttpRequest , blog_id:int):
 
 
 def search(request:HttpRequest):
-    return render(request, "Blog/search.html")
+    if request.method == "POST":
+        search = request.POST["Title"]
+        Blog = Blog_Data.objects.filter(Title__contains=search)
+        return render(request, "Blog/search_data.html" , {"Blog":Blog ,"search":search})
+        #redirect("Blog:search_data.html")
+        #return render(request, "Blog/search_data.html", {"Blog" : Blog})
+    #posts = Blog_Data.objects.filter(Title__contains = "aims") #to filter using postfix __contains
+    #return render(request, "blogApp/view_posts.html", {"posts" : posts})
+    return render(request, "Blog/search.html" )
 
+def search_data(request:HttpRequest):
+    return render(request,"Blog/search_data.html")
+    
 
 def not_found(request:HttpRequest):
     return render(request, "Blog/not_found.html")
