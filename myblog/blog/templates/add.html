@@ -1,0 +1,29 @@
+{% extends 'posts/base.html' %}
+{% block content %}
+<h2>Add new post</h2>
+<form class="row align-items-center" action="" method="blog">
+    {% csrf_token %}
+    <div class="input-group mb-2">
+        <div class="input-group-text w-25">Title</div>
+        <input type="text" name="title" class="form-control" id="autoSizingInputGroup" placeholder="Post Title">
+    </div>
+    <div class="input-group mb-2">
+        <div class="input-group-text w-25">Content</div>
+        <textarea type="text" name="content" rows="10" class="form-control" id="autoSizingInputGroup" placeholder="Post Title"> </textarea>
+    </div>
+    <div class="input-group mb-2">
+        <div class="input-group-text w-25">Publish?</div>
+        <div class="form-check form-check-inline ms-3 mt-2">
+        <input type="radio" class="form-check-input" id='yes' name="is_published" value="True">
+        <label for="yes" class="form-check-label">YES</label>
+        </div>
+        <div class="form-check form-check-inline mt-2">
+        <input type="radio" class="form-check-input" id='no' name="is_published" value="False">
+        <label for="no" class="form-check-label">NO</label>
+    </div>
+    </div>
+    <div class="input-group mb-2">
+        <input type="submit" value="Create Post" class="btn btn-secondary">
+    </div>
+</form>
+{% endblock %}
