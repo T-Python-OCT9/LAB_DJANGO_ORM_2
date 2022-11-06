@@ -1,0 +1,19 @@
+{% extends 'post/base.html' %}
+{% block title %} {{post.title}} {% endblock %}
+{% block content %}
+            <div class="w-75 m-4 px-4 border rounder-3 mx-auto">
+                <h1 class="my-3 border-bottom pb-2 ps-3">{{post.title}}</h1>
+                <p class="ms-5 d-flex justify-content-between">
+                    <span><i class="bi bi-calendar3 me-1"></i> {{post.publish_date|date:'Y-m-d | h-i'}}</span>
+                    <span class="d-flex align-items-center">
+                        Published Status: 
+                        {% if post.is_published %}
+                        <i class="bi bi-check-lg fs-5"></i>
+                        {% else %}
+                        <i class="bi bi-x-lg fs-5"></i>
+                        {% endif %}
+                    </span>
+                </p>
+                <p class="ms-3 mb-4 ps-4">{{post.content}}</p>
+            </div>
+{% endblock %}

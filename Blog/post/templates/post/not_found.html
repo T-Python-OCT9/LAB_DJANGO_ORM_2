@@ -1,0 +1,18 @@
+{% extends 'post/base.html' %}
+{% load static %}
+{% block title %} Page Not Found {% endblock %}
+{% block content %}
+<div class="d-flex">
+    <div class="w-50 m-4 px-4 border rounder-3">
+        <h1 class="my-3 border-bottom pb-2">Page Not Found!</h1>
+        <p class="ms-3"><i class="bi bi-hash"></i> Something went wrong!</p>
+        <p class="ms-3"><i class="bi bi-hash"></i> It looks like page is not available or changed.</p>
+        <p class="ms-5"><i class="bi bi-arrow-return-right"></i> Try to browse posts: (<a href="{% url 'post:list' %}" class="link-secondary"><i class="bi bi-link-45deg"></i> POSTS</a>)</p>
+        <p class="ms-5"><i class="bi bi-arrow-return-right"></i> Or search? (<a href="{% url 'post:search' %}" class="link-secondary"><i class="bi bi-link-45deg"></i> SEARCH</a>)</p>
+    </div>
+    <div class="w-50 m-4 px-4 border rounder-3">
+        <h1 class="my-3 border-bottom pb-2">Oops!</h1>
+        <p class="ms-3"><img class="w-100 rounded-5" src="{% static 'images/notF.png' %}" alt="" srcset=""></p>
+    </div>
+</div>
+{% endblock %}
