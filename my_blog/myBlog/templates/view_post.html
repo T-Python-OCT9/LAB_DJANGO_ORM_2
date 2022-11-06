@@ -1,0 +1,49 @@
+{% extends 'base1.html' %}
+
+{% block title %} Our Posts {% endblock %}
+
+
+
+
+{% block content %}
+
+<h1>Posts List</h1>
+
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">title</th>
+            <th scope="col">publish date</th>
+            <th scope="col">is published</th>
+            <th scope="col">Edit</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for post in posts %}
+            <tr>
+                <th scope="row"><a href="{% url 'my_blog:post_detail' post.id %}">{{ post.Title }}</a></th>
+                <td>{{ post.publish_date }}</td>
+                <td>{{ post.is_published }}</td>
+                <td>
+
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Edit
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="{% url 'my_blog:update_post' post.id %}">Update</a></li>
+                          <li><a class="dropdown-item" href="{% url 'my_blog:delete_post' post.id %}">Delete</a></li>
+                        </ul>
+                      </div>
+
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}

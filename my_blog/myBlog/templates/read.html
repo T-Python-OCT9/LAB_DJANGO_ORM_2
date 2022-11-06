@@ -1,0 +1,14 @@
+{% extends 'base1.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Avaialbe Posts:</h1>
+    <ul>
+        {% for post in Posts %}
+            <li>{{ post.Title }}, {{ post.publish_date }} , {{ post.Content }} , {{ post.is_published }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}
