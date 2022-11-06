@@ -4,6 +4,11 @@ from django.http import HttpRequest, HttpResponse
 from .models import Post
 # Create your views here.
 
+def home(request:HttpRequest):
+    
+    return render(request, "blog/base.html")
+
+
 def add_post(request:HttpRequest):
     if request.method == "POST":
         new_blog = Post(title=request.POST.get('title'), content= request.POST.get('content'),is_published = request.POST.get('is_published') ,publish_date= request.POST.get('publish_date'))
@@ -12,7 +17,7 @@ def add_post(request:HttpRequest):
         return redirect("blog:list_post")
 
 
-    return render(request, "blog/index.html")
+    return render(request, "blog/add_post.html")
     
 
 def list_post(request:HttpRequest):
