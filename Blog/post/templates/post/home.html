@@ -1,0 +1,20 @@
+{% extends 'post/base.html' %}
+{% block title %} Najd Blog {% endblock %}
+{% block content %}
+<div class="d-flex">
+    <div class="w-50 m-4 px-4 border rounder-3">
+        <h1 class="my-3 border-bottom pb-2">Najd Blog!</h1>
+        <p class="ms-3"><i class="bi bi-hash"></i> You're welcome in Najd Blog!</p>
+        <p class="ms-3"><i class="bi bi-hash"></i> Where every mind is valuable for us.</p>
+        <p class="ms-5"><i class="bi bi-arrow-return-right"></i> Spreading your knowledge? Add a new post (<a href="{% url 'post:add' %}" class="link-secondary"><i class="bi bi-link-45deg"></i> ADD</a>)</p>
+        <p class="ms-5"><i class="bi bi-arrow-return-right"></i> Browse all posts: (<a href="{% url 'post:list' %}" class="link-secondary"><i class="bi bi-link-45deg"></i> POSTS</a>)</p>
+        <p class="ms-5"><i class="bi bi-arrow-return-right"></i> Search for something? (<a href="{% url 'post:search' %}" class="link-secondary"><i class="bi bi-link-45deg"></i> SEARCH</a>)</p>
+    </div>
+    <div class="w-50 m-4 px-4 border rounder-3">
+        <h1 class="my-3 border-bottom pb-2">Latest Five Posts</h1>
+        {% for post in posts %}
+        <p class="ms-3"><i class="bi bi-arrow-return-right"></i> <a href="{% url 'post:detail' post.id %}" class="link-secondary">{{post.title|slice:':40'}}... <i class="bi bi-link-45deg"></i></a></p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
