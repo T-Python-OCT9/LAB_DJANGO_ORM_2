@@ -9,15 +9,12 @@ from .models import Blog
 # Create your views here.
 
 def home(request:HttpRequest):
-    blogs = Blog.objects.all()
+    if 'search' in request.GET:
+        blogs = Blog.objects.filter(title__contains = request.GET['search'] )
+    else:
+        blogs = Blog.objects.all()
     context={"blog" : blogs}
     return render(request, "app1/blog1.html" , context )
-
-def search(request:HttpRequest):
-    search=request.GET['search']
-    blogs = Blog.objects.filter(title__contains = search )
-    context={"blog" : blogs}
-    return render(request, "app1/search.html" , context )
 
 
 def add_blog(request:HttpRequest):
