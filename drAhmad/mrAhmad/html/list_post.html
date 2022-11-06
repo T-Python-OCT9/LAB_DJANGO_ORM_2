@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %} Blog Posts {% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  </head>
+  <body>
+    {% block body %}
+        <div class="container mt-5 mb-3 p-3">
+          <h3>Blog Posts</h3>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Date</th>
+                <th scope="col">Published</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {% for post in all_post %}
+              <tr>
+                {% csrf_token %}
+                <td><a href="{% url 'blog:view_post' post.id %}">{{post.title}}</a></td>
+                <td>{{post.publish_date}}</td>
+                <td>{{post.is_published}}</td>
+
+                <td><div class="dropdown">
+                  <svg class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                  </svg>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{% url 'blog:update_post' post.id %}">Update</a></li>
+                    <li><a class="dropdown-item" href="{% url 'blog:delete_post' post.id %}">Delete</a></li>
+                  </ul>
+                </div></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+      {% endblock %}
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    </body>
+</html>
