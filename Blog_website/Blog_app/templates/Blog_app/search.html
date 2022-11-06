@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% extends 'Blog_app/base.html' %}
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    {% block content %}
+ 
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        {% for post in search_posts %}
+         <div class="col-md-10 col-lg-8 col-xl-7">
+             <div class="post-preview">
+                     <h2 class="post-title"><a  class="text-dark" href="{% url 'Blog_app:post_detail' post.id %}">{{post.Title}}</a></h2>
+                     <p class="post-subtitle">{{post.Content}}</p>
+                     <p class="post-subtitle">{{post.is_published}}</p>
+                 <p class="post-meta">Posted at {{post.publish_date}} </p>
+                 <div>
+                     <a href="{% url 'Blog_app:update_post' post.id %}"><img class="post-meta" src="https://cdn-icons-png.flaticon.com/512/875/875100.png " width="16" height="16"class="bi bi-x-lg" viewBox="0 0 16 16"/></a>
+                    <a href="{% url 'Blog_app:delete_post' post.id %}"><img class="post-meta" src="https://cdn-icons-png.flaticon.com/512/1617/1617543.png" width="16" height="16"class="bi bi-x-lg" viewBox="0 0 16 16"/></a> 
+                 </div>                   
+             </div>
+             <hr class="my-4">
+         </div>
+         {% endfor%}
+     </div>
+     
+     {% endblock %}
+</body>
+</html>
