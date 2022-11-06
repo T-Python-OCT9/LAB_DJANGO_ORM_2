@@ -1,0 +1,27 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+<div class="container" > 
+    <h2> ADD A BLOG POST </h2>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label> please write the title for the blog :</label>
+        <input type="text" name="Title " />
+        <br/>
+        <label>the Content.. </label>
+        <textarea name="Content" placeholder="Title..." > </textarea>
+        <br/>
+        <label> publish date :</label>
+        <input type="datetime-local" name="publish_date" /><label> please write the title for the blog :</label>
+        <br/>
+        <label> please write the title for the blog :</label>
+        <input type="hidden" name="is_published  هنا يحتاج تعديل " />
+
+        <input type="submit" value="push" />
+    </form>
+
+</div>
+
+{% endblock %}
