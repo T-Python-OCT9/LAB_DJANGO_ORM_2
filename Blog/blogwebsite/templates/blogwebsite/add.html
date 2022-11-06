@@ -1,0 +1,36 @@
+{% extends 'blogwebsite/base.html' %}
+
+{% block title %} Add New Post {% endblock %}
+
+{% block content %}
+    <h1>Add New Post</h1>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label  class="form-label">Title</label>
+            <input type="text" class="form-control" name="title">
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">Content</label>
+            <textarea type="text" class="form-control" name="content"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">Publish Date</label>
+            <input type="datetime-local" class="form-control" name="publish_date" />
+        </div>
+
+
+        <div class="mb-3">
+            <label class="form-label">Is Published ?</label>
+            <select class="form-select" name="is_published">
+                <option value="True">Yes</option>
+                <option value="False">No</option>
+            </select>
+        </div>
+        
+        <input class="btn btn-primary" type="submit" value="Creat Post" />
+    </form>
+{% endblock %}
