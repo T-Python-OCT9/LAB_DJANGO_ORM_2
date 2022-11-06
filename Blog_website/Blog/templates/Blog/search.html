@@ -1,0 +1,17 @@
+{% extends 'Blog/base.html' %}
+{% block title %} Search {% endblock %}
+{% block content %}
+<div class="px-4 py-5 my-5 text-center">
+    <h1 class="display-5 fw-bold">Search Blogs</h1>
+    <div class="col-lg-6 mx-auto py-2 my-3">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <label> <h4>Enter The Title</h4> </label>
+            <input type="text" name="Title" class="form-control" value="{{Title}}"/><br><br>
+            <input type="submit" class="btn btn-light" value="Search" />
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

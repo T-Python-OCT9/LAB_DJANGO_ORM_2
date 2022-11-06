@@ -1,0 +1,15 @@
+{% extends 'Blog/base.html' %}
+{% block title %} Search {% endblock %}
+{% block content %}
+
+<div class="card text-center text-dark">
+    <div class="card-header">Blog Number: {{ Blog.id }} </div>
+    <div class="card-body">
+      <h5 class="card-title">{{ Blog.Title }}</h5>
+      <p class="card-text">{{ Blog.Content }}</p>
+      <a href="{% url 'Blog:read' %}" class="btn btn-secondary">Go Back</a>
+    </div>
+    <div class="card-footer text-muted"> {{ Blog.publish_date }} </div>
+  </div>
+
+{% endblock %}

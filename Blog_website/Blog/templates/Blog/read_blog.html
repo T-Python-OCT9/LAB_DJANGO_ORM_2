@@ -1,0 +1,46 @@
+{% extends 'Blog/base.html' %}
+{% block title %} Avaialbe Blog {% endblock %}
+{% block content %}
+
+<div class="container pt-5">
+  <h1>Avaialbe Blog:</h1>
+</div>
+<div class="container pt-4">
+  <table class="table text-white">
+      <thead>
+      <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Publish Date</th>
+          <th scope="col">Is Published</th>
+          <th scope="col">Edit</th>
+      </tr>
+      </thead>
+      <tbody>
+          {% for msg in msg_list %}
+          <tr>
+              <th scope="row">{{ msg.Title }}</th>
+              <td>{{ msg.publish_date }}</td>
+              <td>{{ msg.is_published }}</td>
+              <td>
+
+                  <div class="dropdown">
+                      <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Edit
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'Blog:blog_detail' msg.id %}">Detail</a></li>
+                        <li><a class="dropdown-item" href="{% url 'Blog:update_blog' msg.id %}">Update</a></li>
+                        <li><a class="dropdown-item" href="{% url 'Blog:delete_blog' msg.id %}">Delete</a></li>
+                      </ul>
+                    </div>
+
+              </td>
+          </tr>
+          {% endfor %}
+
+      </tbody>
+  </table>
+</div>
+
+
+{% endblock %}

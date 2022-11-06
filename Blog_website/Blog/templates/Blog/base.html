@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %} Blog Project {% endblock %}</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    </head>
+    <body class="text-white bg-dark">
+        
+        <nav class="navbar justify-content-center navbar-dark bg-dark border-bottom py-2 my-3">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="{% url 'Blog:home' %}">Nourah Blogs</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'Blog:home' %}">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'Blog:read' %}">Avaialbe Blog</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'Blog:add' %}">Add Blog</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'Blog:search' %}">Search</a>
+                  </li>
+                </ul>
+                
+              </div>
+            </div>
+          </nav>
+        
+        <div class="container  pt-4">
+            {% block content  %}
+            {% endblock %}
+        </div>
+
+        <div class="container text-white-50 pt-5">
+            <footer class="py-3 my-4">
+              <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a href="{% url 'Blog:home' %}" class="nav-link px-2 text-muted">Home</a></li>
+                <li class="nav-item"><a href="{% url 'Blog:read' %}" class="nav-link px-2 text-muted">Avaialbe Blog</a></li>
+                <li class="nav-item"><a href="{% url 'Blog:add' %}" class="nav-link px-2 text-muted">Add Blog</a></li>
+                <li class="nav-item"><a href="{% url 'Blog:search' %}" class="nav-link px-2 text-muted">Search</a></li>
+              </ul>
+              <p class="text-center text-muted">© 2022 Nourah Alqahtani Blogs</p>
+            </footer>
+          </div>
+    
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    </body>
+
+
+
+</html>

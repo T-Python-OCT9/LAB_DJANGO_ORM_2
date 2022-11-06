@@ -1,0 +1,26 @@
+{% extends 'Blog/base.html' %}
+{% block title %} Update Blog {% endblock %}
+{% block content %}
+
+<div class="container">
+    <h1>Update Blog: {{ Blog.id }} </h1>
+    <form action="" method="POST">
+      {% csrf_token %}
+      <label>Title:</label>
+      <input type="text" name="Title" class="form-control" value="{{ Blog.Title }}"/><br><br>
+      <label>Content:</label>
+      <textarea name="Content" class="form-control">{{ Blog.Content }}</textarea><br><br>
+      <label>Choose Is Published:</label>
+      <select class="form-select" name="is_published" value="{{ Blog.is_published }}">
+        <option value="True">Yes</option>
+        <option value="False">No</option>
+      </select><br><br>
+      <label>Publish Date:</label>
+      <input type="datetime-local"  class="btn btn-outline-secondary" name="publish_date" value="{{ Blog.publish_date }}"/><br><br>
+      
+      <input type="submit" class="btn btn-light" value="Update" />
+    
+    </form>
+  </div>
+
+{% endblock %}
