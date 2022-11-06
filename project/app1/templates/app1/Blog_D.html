@@ -1,0 +1,15 @@
+{% extends 'app1/base.html' %}
+
+{% block title %} {{ Blog.title }} {% endblock %}
+
+
+{% block content %}
+<h1>{{ Blog.title }}</h1>
+<div class="container">
+    <p>{{ Blog.publish_date }}</p>
+    <div>
+        {{ Blog.description }}
+    </div>
+</div>
+
+{% endblock %}
