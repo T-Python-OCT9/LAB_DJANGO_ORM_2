@@ -1,0 +1,38 @@
+{% extends 'base.html'%}
+
+
+
+
+{% block content %}
+
+
+<h1>You can tybeee anything</h1>
+<div class="container">
+
+    <form action="" method="POST">
+    {% csrf_token %}
+    <label>title</label>
+    <input type="text" name="title">
+    <label>The content</label>
+    <textarea name="content" id="" cols="30" rows="10"></textarea>
+    <label>if published </label>
+    <label>True</label>
+    <input type="radio" name="is_published" value="True">
+    <label>False</label>
+    <input type="radio" name="is_published" value="False">
+    <label>Date</label>
+    <input type="date" name="date">
+    <input type="submit" name="Create">
+</form>
+
+
+
+  </div>
+
+  
+
+
+{%  endblock %}
+
+
+
