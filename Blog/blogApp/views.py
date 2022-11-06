@@ -22,9 +22,12 @@ def blogAdd (request:HttpRequest):
 
 
 def blogRead (request:HttpRequest):
-    blog_list=Blog.objects.all()
-    #result=request.GET.get("search")
-    #blog_list2=Blog.objects.filter(title__contains = result)
+    if "search" in request.GET:
+        blog_list=Blog.objects.filter(title__contains = request.GET["search"])
+    else:
+        blog_list=Blog.objects.all()
+         #result=request.GET.get("search")
+         #blog_list2=Blog.objects.filter(title__contains = result)
     return render(request,'blogApp/blogRead.html',{"blogs":blog_list})
 
 
@@ -65,8 +68,7 @@ def update(request:HttpRequest,post_id : int):
 
         return redirect("blogApp:Read")
 
-    view_info.publish_date = view_info.publish_date.isoformat("T", "hours").replace("+", ":")
-    return render(request, "blogApp/update_post.html", {"blogs" : view_info})
+    return render(request, "blogApp/update.html", {"blogs" : view_info})
 
 
 

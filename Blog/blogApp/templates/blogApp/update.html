@@ -7,18 +7,18 @@
         {% csrf_token %}
     <div class="input-group mb-3">
         <span class="input-group-text">Title</span>
-        <input type="text" class="form-control" name="title">
+        <input type="text" class="form-control" name="title" value="{{blogs.title}}">
       </div>
 
 
       <div class="input-group pt-4">
         <span class="input-group-text">Content</span>
-        <textarea class="form-control" aria-label="With textarea" name="content"></textarea>
+        <textarea class="form-control" aria-label="With textarea" name="content">{{blogs.content}}</textarea>
       </div>
 
       <div class="pt-2">
       <select name="is_published" class="form-select" aria-label="Default select example">
-        <option selected>is it published ? </option>
+        <option selected >is it published ? </option>
         <option value="True">yes</option>
         <option value="False">no</option>
       </select> 
@@ -27,13 +27,13 @@
 
       <div class="pt-2">
         <label>Choose Date:</label>
-        <input type="date" name="publish_date" />
+        <input type="date" name="publish_date" value="{{blogs.publish_date}}"/>
       </div>
 
 
 
       <div class="pt-2">
-      <input type="submit" value="Create"/>
+      <input type="submit" value="update"/>
 
     
     </div>
